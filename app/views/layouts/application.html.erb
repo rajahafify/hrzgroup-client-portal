@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= t("layouts.application.title") %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "application", media: "all", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <%= link_to t("layouts.application.navigation.clients"), clients_path if user_signed_in? %>
+        <% if user_signed_in? %>
+          <%= button_to t("layouts.application.navigation.logout"), session_path, method: :delete, data: { turbo_confirm: "Sign out?" } %>
+        <% else %>
+          <%= link_to t("layouts.application.navigation.login"), new_session_path %>
+        <% end %>
+      </nav>
+    </header>
+
+    <% flash.each do |key, message| %>
+      <div class="flash <%= flash_class(key) %>"><%= message %></div>
+    <% end %>
+
+    <main>
+      <%= yield %>
+    </main>
+  </body>
+</html>

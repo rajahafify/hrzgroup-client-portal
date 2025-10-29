@@ -1,0 +1,9 @@
+hrz:
+  company_name: HRZ Group
+  contact_no: "+1-555-0100"
+  contact_email: contact@hrzgroup.test
+
+acme:
+  company_name: ACME Corp
+  contact_no: "+1-555-0101"
+  contact_email: hello@acme.example

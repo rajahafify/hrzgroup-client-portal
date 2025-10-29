@@ -1,0 +1,23 @@
+en:
+  hello: "Hello world"
+  layouts:
+    application:
+      title: "HRZ Group Client Portal"
+      navigation:
+        clients: "Clients"
+        logout: "Log out"
+        login: "Log in"
+  sessions:
+    new:
+      heading: "Sign in"
+      submit: "Sign in"
+  clients:
+    index:
+      heading: "Clients"
+      new_client: "New Client"
+    new:
+      heading: "New Client"
+    edit:
+      heading: "Edit Client"
+    show:
+      heading: "Client Details"
