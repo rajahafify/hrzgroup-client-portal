@@ -1,0 +1,12 @@
+<div class="card">
+  <h2><%= @client.company_name %></h2>
+  <p><strong>Contact number:</strong> <%= @client.contact_no %></p>
+  <p><strong>Contact email:</strong> <%= mail_to @client.contact_email %></p>
+</div>
+
+<% if admin_access? %>
+  <div>
+    <%= link_to "Edit", edit_client_path(@client), class: "button" %>
+    <%= link_to "Back to clients", clients_path, class: "button secondary" %>
+  </div>
+<% end %>

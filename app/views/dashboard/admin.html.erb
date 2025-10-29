@@ -1,0 +1,26 @@
+<div class="card">
+  <h2>Client overview</h2>
+  <p>Manage client accounts and keep contact information up to date.</p>
+  <%= link_to "Go to client management", clients_path, class: "button" %>
+</div>
+
+<div class="card">
+  <table>
+    <thead>
+      <tr>
+        <th>Company</th>
+        <th>Contact number</th>
+        <th>Contact email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @clients.each do |client| %>
+        <tr>
+          <td><%= link_to client.company_name, client %></td>
+          <td><%= client.contact_no %></td>
+          <td><%= mail_to client.contact_email %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

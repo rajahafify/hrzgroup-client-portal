@@ -1,0 +1,10 @@
+<div class="card">
+  <h2>Welcome back!</h2>
+  <p>Here are the details we have on file for your organization.</p>
+</div>
+
+<div class="card">
+  <h3><%= @client.company_name %></h3>
+  <p><strong>Contact number:</strong> <%= @client.contact_no %></p>
+  <p><strong>Contact email:</strong> <%= mail_to @client.contact_email %></p>
+</div>
