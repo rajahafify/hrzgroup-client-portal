@@ -1,0 +1,7 @@
+<h1>Clients</h1>
+
+<% if current_user.superadmin? || current_user.admin? %>
+  <%= link_to "New Client", new_client_path, class: "button" %>
+<% end %>
+
+<%= render partial: "table", locals: { clients: @clients, show_actions: current_user.superadmin? || current_user.admin? } %>

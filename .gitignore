@@ -1,0 +1,10 @@
+/log/*
+/tmp/*
+/db/*.sqlite3
+/.bundle
+/vendor/bundle
+/node_modules
+/storage/*
+!/log/.keep
+!/tmp/.keep
+!/storage/.keep

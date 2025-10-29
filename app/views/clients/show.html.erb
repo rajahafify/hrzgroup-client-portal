@@ -1,0 +1,16 @@
+<h1><%= @client.company_name %></h1>
+
+<dl>
+  <dt>Contact number</dt>
+  <dd><%= @client.contact_no %></dd>
+
+  <dt>Contact email</dt>
+  <dd><%= mail_to @client.contact_email %></dd>
+</dl>
+
+<div class="actions">
+  <%= link_to "Back to clients", clients_path, class: "button button--secondary" %>
+  <% if current_user.superadmin? || current_user.admin? %>
+    <%= link_to "Edit", edit_client_path(@client), class: "button" %>
+  <% end %>
+</div>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HRZGroup Client Portal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <style>
+      body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f5f5f5; }
+      header { background: #1f2a44; color: #fff; padding: 1rem; }
+      nav { display: inline-flex; align-items: center; gap: 1rem; }
+      nav a { color: #fff; text-decoration: none; }
+      main { padding: 2rem; }
+      .flash { margin-bottom: 1rem; padding: 0.75rem 1rem; border-radius: 4px; }
+      .flash.notice { background: #e6f4ea; color: #1f7a3d; }
+      .flash.alert { background: #fdecea; color: #b3261e; }
+      .flash.success { background: #e6f4ea; color: #1f7a3d; }
+      .flash.info { background: #e8f0fe; color: #1967d2; }
+      table { width: 100%; border-collapse: collapse; margin-top: 1rem; background: #fff; }
+      th, td { border: 1px solid #ddd; padding: 0.75rem; text-align: left; }
+      th { background: #f0f0f0; }
+      form label { display: block; margin-bottom: 0.25rem; font-weight: bold; }
+      form input { padding: 0.5rem; width: 100%; margin-bottom: 1rem; box-sizing: border-box; }
+      .actions { display: flex; gap: 0.5rem; }
+      .button { background: #1f2a44; color: #fff; padding: 0.5rem 1rem; border-radius: 4px; text-decoration: none; }
+      .button--secondary { background: #64748b; }
+      .button--danger { background: #b3261e; }
+      code { background: #e2e8f0; padding: 0.1rem 0.3rem; border-radius: 4px; font-size: 0.9rem; }
+    </style>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+  <body>
+    <header>
+      <div style="display:flex; align-items:center; justify-content:space-between; gap: 1rem;">
+        <strong>HRZGroup Client Portal</strong>
+        <% if user_signed_in? %>
+          <div style="margin-left:auto; text-align:right;">
+            <div>Signed in as <em><%= current_user.name %></em></div>
+            <small>Role: <%= current_user.role.humanize %></small>
+          </div>
+          <nav>
+            <%= link_to "Dashboard", root_path %>
+            <%= link_to "Clients", clients_path %>
+            <%= link_to "Logout", logout_path, data: { turbo_method: :delete }, class: "button button--secondary" %>
+          </nav>
+        <% end %>
+      </div>
+    </header>
+    <main>
+      <% flash.each do |type, message| %>
+        <div class="flash <%= type.to_s %>"><%= message %></div>
+      <% end %>
+      <%= yield %>
+    </main>
+  </body>
+</html>

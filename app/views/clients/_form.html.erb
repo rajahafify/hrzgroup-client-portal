@@ -1,0 +1,28 @@
+<%= form_with model: @client, local: true do |form| %>
+  <% if @client.errors.any? %>
+    <div class="flash alert">
+      <strong><%= pluralize(@client.errors.count, "error") %> prevented this client from being saved:</strong>
+      <ul>
+        <% @client.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div>
+    <%= form.label :company_name %>
+    <%= form.text_field :company_name, required: true %>
+  </div>
+  <div>
+    <%= form.label :contact_no, "Contact number" %>
+    <%= form.text_field :contact_no, required: true %>
+  </div>
+  <div>
+    <%= form.label :contact_email %>
+    <%= form.email_field :contact_email, required: true %>
+  </div>
+  <div class="actions">
+    <%= form.submit class: "button" %>
+    <%= link_to "Cancel", (@client.persisted? ? @client : clients_path), class: "button button--secondary" %>
+  </div>
+<% end %>

@@ -1,0 +1,10 @@
+<h1>Welcome, <%= current_user.name %></h1>
+
+<% if current_user.superadmin? || current_user.admin? %>
+  <p>You have administrative access. Manage client accounts below.</p>
+  <p><%= link_to "Create a new client", new_client_path, class: "button" %></p>
+  <%= render partial: "clients/table", locals: { clients: @clients, show_actions: current_user.superadmin? || current_user.admin? } %>
+<% else %>
+  <p>You can view your company's information from the client directory.</p>
+  <p><%= link_to "View clients", clients_path, class: "button" %></p>
+<% end %>
