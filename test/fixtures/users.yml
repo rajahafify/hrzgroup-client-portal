@@ -1,0 +1,15 @@
+superadmin:
+  email: superadmin@hrzgroup.test
+  password_digest: <%= BCrypt::Password.create("password") %>
+  role: 0
+
+admin:
+  email: admin@hrzgroup.test
+  password_digest: <%= BCrypt::Password.create("password") %>
+  role: 1
+
+client:
+  email: client@acme.test
+  password_digest: <%= BCrypt::Password.create("password") %>
+  role: 2
+  client: acme

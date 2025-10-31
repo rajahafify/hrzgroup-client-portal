@@ -1,0 +1,30 @@
+<div class="card">
+  <div class="actions" style="display:flex;justify-content:space-between;align-items:center;">
+    <h2>Clients</h2>
+    <%= link_to "New client", new_client_path, class: "button" %>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Company</th>
+        <th>Contact number</th>
+        <th>Contact email</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @clients.each do |client| %>
+        <tr>
+          <td><%= link_to client.company_name, client %></td>
+          <td><%= client.contact_no %></td>
+          <td><%= mail_to client.contact_email %></td>
+          <td>
+            <%= link_to "Edit", edit_client_path(client), class: "button secondary" %>
+            <%= link_to "Delete", client_path(client), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "button secondary" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

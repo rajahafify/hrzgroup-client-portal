@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HRZGroup Client Portal</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/2.0.0/modern-normalize.min.css">
+    <%= stylesheet_link_tag "application", media: "all" %>
+    <%= javascript_importmap_tags %>
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="container">
+        <h1 class="brand"><%= link_to "HRZGroup", root_path %></h1>
+        <nav>
+          <% if logged_in? %>
+            <% if admin_access? %>
+              <%= link_to "Clients", clients_path, class: "nav-link" %>
+            <% end %>
+            <%= link_to "Sign out", logout_path, data: { turbo_method: :delete }, class: "nav-link" %>
+          <% else %>
+            <%= link_to "Sign in", login_path, class: "nav-link" %>
+          <% end %>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <% flash.each do |type, message| %>
+        <div class="flash <%= type %>"><%= message %></div>
+      <% end %>
+      <%= yield %>
+    </main>
+  </body>
+</html>
